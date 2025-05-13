@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Qualidade - Normas ISO</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- AOS - Animate On Scroll -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #27ae60;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        /* Navbar Styling */
+        .navbar {
+            background-color: var(--secondary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--light-color) !important;
+        }
+        
+        .nav-link {
+            color: var(--light-color) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+            transform: translateY(-2px);
+        }
+        
+        .dropdown-menu {
+            background-color: var(--secondary-color);
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .dropdown-item {
+            color: var(--light-color);
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-item:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 100px 0;
+            margin-bottom: 50px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        /* Card Styling */
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card-title {
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+        
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        /* Timeline Styling */
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: var(--primary-color);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+        }
+        
+        .timeline-content {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            width: 45%;
+        }
+        
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            left: -40px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::after {
+            right: -40px;
+        }
+        
+        .timeline-date {
+            position: absolute;
+            top: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-date {
+            left: -150px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-date {
+            right: -150px;
+        }
+        
+        /* Table Styling */
+        .table-comparison {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .table-comparison thead {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .table-comparison th, .table-comparison td {
+            padding: 15px;
+        }
+        
+        .table-responsive {
+            overflow-x: auto;
+        }
+        
+        /* About Me Section */
+        .about-me {
+            padding: 50px 0;
+        }
+        
+        .profile-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary-color);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer Styling */
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+            padding: 50px 0 20px;
+            margin-top: 100px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px);
+            background-color: var(--accent-color);
+        }
+        
+        /* Feature Icons */
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            height: 4px;
+            width: 60px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .text-center .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Characteristic Cards */
+        .characteristic-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .characteristic-card .card-body {
+            flex: 1;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Responsive Fixes */
+        @media (max-width: 992px) {
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                width: 85%;
+                margin-left: auto !important;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -40px;
+                right: auto;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-date,
+            .timeline-item:nth-child(even) .timeline-date {
+                left: 0;
+                right: auto;
+                top: -30px;
+                position: relative;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .timeline-content {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-check-circle me-2"></i>
+                Gestão de Qualidade
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            ISO
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#iso25010">ISO 25010</a></li>
+                            <li><a class="dropdown-item" href="#iso9001">ISO 9001</a></li>
+                            <li><a class="dropdown-item" href="#iso9126">ISO 9126</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#caracteristicas">Características</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#historico">Histórico</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#normas">Normas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobre">Sobre Mim</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="container text-center" data-aos="fade-up">
+            <h1>Gestão de Qualidade e Normas ISO</h1>
+            <p class="lead">Explorando as normas de qualidade ISO 25010, ISO 9001 e ISO 9126 para o desenvolvimento de software e sistemas de gestão de qualidade.</p>
+            <a href="#normas" class="btn btn-light btn-lg">Conhecer as Normas</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Overview Cards -->
+        <div class="row mb-5" data-aos="fade-up">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h5 class="card-title">Certificação ISO</h5>
+                        <p class="card-text">As certificações ISO são reconhecidas mundialmente como padrões de qualidade e excelência em diversos setores.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h5 class="card-title">Gestão de Processos</h5>
+                        <p class="card-text">Sistemas de gestão da qualidade melhoram a eficiência, reduzem custos e aumentam a satisfação do cliente.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h5 class="card-title">Qualidade de Software</h5>
+                        <p class="card-text">Normas específicas para avaliar a qualidade de produtos de software, garantindo excelência no desenvolvimento.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ISO 25010 Section -->
+        <section id="iso25010" class="py-5">
+            <h2 class="section-title mb-4" data-aos="fade-right">ISO 25010: Qualidade de Produto de Software</h2>
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <p>A ISO/IEC 25010 é uma norma internacional que define um modelo de qualidade para produtos de software. Ela substitui a ISO/IEC 9126 e faz parte da família de normas SQuaRE (System and Software Quality Requirements and Evaluation).</p>
+                    <p>Esta norma estabelece oito características principais de qualidade, cada uma com suas subcaracterísticas, para avaliar um produto de software:</p>
+                    <ul>
+                        <li><strong>Adequação Funcional</strong> - Capacidade do produto fornecer funções que atendam às necessidades declaradas e implícitas</li>
+                        <li><strong>Eficiência de Desempenho</strong> - Desempenho em relação aos recursos utilizados</li>
+                        <li><strong>Compatibilidade</strong> - Capacidade de troca de informações com outros sistemas</li>
+                        <li><strong>Usabilidade</strong> - Facilidade de uso do produto</li>
+                        <li><strong>Confiabilidade</strong> - Desempenho de funções especificadas sob condições estabelecidas</li>
+                        <li><strong>Segurança</strong> - Proteção de informações e dados</li>
+                        <li><strong>Manutenibilidade</strong> - Facilidade de modificação do produto</li>
+                        <li><strong>Portabilidade</strong> - Capacidade de transferência de um ambiente para outro</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <img src="/api/placeholder/600/400" alt="Modelo de Qualidade ISO 25010" class="img-fluid rounded shadow">
+                    <div class="alert alert-info mt-4">
+                        <h5><i class="fas fa-info-circle me-2"></i>Você sabia?</h5>
+                        <p class="mb-0">A ISO 25010 é amplamente utilizada na indústria de software para estabelecer métricas e critérios para avaliação de qualidade de produtos, tanto durante o desenvolvimento quanto na aceitação pelo cliente.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ISO 9001 Section -->
+        <section id="iso9001" class="py-5">
+            <h2 class="section-title mb-4" data-aos="fade-right">ISO 9001: Sistema de Gestão da Qualidade</h2>
+            <div class="row">
+                <div class="col-lg-6 order-lg-2" data-aos="fade-left">
+                    <p>A ISO 9001 é uma norma internacional que estabelece requisitos para um Sistema de Gestão da Qualidade (SGQ). Esta norma é baseada em diversos princípios de gestão da qualidade, incluindo um forte foco no cliente, motivação e implicação da alta direção, abordagem de processo e melhoria contínua.</p>
+                    <p>A versão mais recente da ISO 9001 (2015) adota a estrutura de alto nível (HLS - High Level Structure), tornando-a mais compatível com outras normas de sistemas de gestão. Os principais elementos da ISO 9001:2015 incluem:</p>
+                    <ul>
+                        <li><strong>Contexto da organização</strong> - Compreensão da organização e seu contexto</li>
+                        <li><strong>Liderança</strong> - Comprometimento da alta direção</li>
+                        <li><strong>Planejamento</strong> - Ações para abordar riscos e oportunidades</li>
+                        <li><strong>Suporte</strong> - Recursos, competência e conscientização</li>
+                        <li><strong>Operação</strong> - Planejamento e controle operacional</li>
+                        <li><strong>Avaliação de desempenho</strong> - Monitoramento, medição, análise e avaliação</li>
+                        <li><strong>Melhoria</strong> - Não conformidade e ação corretiva</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 order-lg-1" data-aos="fade-right">
+                    <img src="/api/placeholder/600/400" alt="Ciclo PDCA da ISO 9001" class="img-fluid rounded shadow">
+                    <div class="alert alert-success mt-4">
+                        <h5><i class="fas fa-lightbulb me-2"></i>Benefícios</h5>
+                        <p class="mb-0">A implementação da ISO 9001 pode trazer diversos benefícios, como aumento da satisfação do cliente, melhoria dos processos internos, aumento da eficiência operacional e maior competitividade no mercado.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ISO 9126 Section -->
+        <section id="iso9126" class="py-5">
+            <h2 class="section-title mb-4" data-aos="fade-right">ISO 9126: O Precursor da Qualidade de Software</h2>
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <p>A ISO/IEC 9126 foi uma norma internacional para a avaliação da qualidade de software, que foi posteriormente substituída pela série ISO/IEC 25000, incluindo a ISO 25010. Publicada inicialmente em 1991, a ISO 9126 foi uma das primeiras tentativas de definir um conjunto padronizado de características para avaliar a qualidade de software.</p>
+                    <p>Esta norma definia seis características principais para qualidade de software:</p>
+                    <ul>
+                        <li><strong>Funcionalidade</strong> - Conjunto de atributos que evidenciam a existência de funções específicas</li>
+                        <li><strong>Confiabilidade</strong> - Capacidade de manter um nível de desempenho especificado</li>
+                        <li><strong>Usabilidade</strong> - Esforço necessário para uso do software</li>
+                        <li><strong>Eficiência</strong> - Relação entre o nível de desempenho e os recursos utilizados</li>
+                        <li><strong>Manutenibilidade</strong> - Esforço necessário para fazer modificações específicas</li>
+                        <li><strong>Portabilidade</strong> - Capacidade de ser transferido para outro ambiente</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <img src="/api/placeholder/600/400" alt="Características da ISO 9126" class="img-fluid rounded shadow">
+                    <div class="alert alert-warning mt-4">
+                        <h5><i class="fas fa-history me-2"></i>Legado</h5>
+                        <p class="mb-0">Embora substituída pela ISO 25010, a ISO 9126 estabeleceu as bases fundamentais para a avaliação de qualidade de software que são utilizadas até hoje. Muitos conceitos da ISO 9126 foram expandidos e refinados na ISO 25010.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Características Section -->
+        <section id="caracteristicas" class="py-5">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Características de Qualidade</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in">
+                    <div class="card characteristic-card">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-puzzle-piece me-2 text-primary"></i>Adequação Funcional</h5>
+                            <p class="card-text">Refere-se ao grau em que um produto fornece funções que atendem às necessidades declaradas e implícitas quando usado sob condições especificadas.</p>
+                            <ul>
+                                <li>Completude funcional</li>
+                                <li>Correção funcional</li>
+                                <li>Adequação funcional</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card characteristic-card">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-tachometer-alt me-2 text-primary"></i>Eficiência de Desempenho</h5>
+                            <p class="card-text">Representa o desempenho em relação à quantidade de recursos utilizados sob condições estabelecidas.</p>
+                            <ul>
+                                <li>Comportamento em relação ao tempo</li>
+                                <li>Utilização de recursos</li>
+                                <li>Capacidade</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="card characteristic-card">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-handshake me-2 text-primary"></i>Compatibilidade</h5>
+                            <p class="card-text">Capacidade de um produto trocar informações com outros produtos, sistemas ou componentes e/ou realizar suas funções necessárias.</p>
+                            <ul>
+                                <li>Coexistência</li>
+                                <li>Interoperabilidade</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="card characteristic-card">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-user-friends me-2 text-primary"></i>Usabilidade</h5>
+                            <p class="card-text">Grau em que um produto pode ser usado por usuários específicos para atingir objetivos específicos com eficácia, eficiência e satisfação.</p>
+                            <ul>
+                                <li>Reconhecimento de adequação</li>
+                                <li>Apreensibilidade</li>
+                                <li>Operabilidade</li>
+                                <li>Proteção contra erro do usuário</li>
+                                <li>Estética da interface</li>
+                                <li>Acessibilidade</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="card characteristic-card">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-shield-alt me-2 text-primary"></i>Segurança</h5>
+                            <p class="card-text">Grau em que um produto protege informações e dados para que pessoas ou outros produtos tenham o grau de acesso apropriado aos seus tipos e níveis de autorização.</p>
+                            <ul>
+                                <li>Confidencialidade</li>
+                                <li>Integridade</li>
+                                <li>Não repúdio</li>
+                                <li>Autenticidade</li>
+                                <li>Responsabilização</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="card characteristic-card">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-tools me-2 text-primary"></i>Manutenibilidade</h5>
+                            <p class="card-text">Grau de eficácia e eficiência com que um produto pode ser modificado pelos mantenedores designados.</p>
+                            <ul>
+                                <li>Modularidade</li>
+                                <li>Reusabilidade</li>
+                                <li>Analisabilidade</li>
+                                <li>Modificabilidade</li>
+                                <li>Testabilidade</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Histórico Section -->
+        <section id="historico" class="py-5">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Histórico da Gestão de Qualidade</h2>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-date">1920s</div>
+                    <div class="timeline-content">
+                        <h4>Início do Controle Estatístico</h4>
+                        <p>Walter Shewhart desenvolveu os conceitos de controle estatístico de processos na Bell Telephone Laboratories, introduzindo os gráficos de controle.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-date">1950s</div>
+                    <div class="timeline-content">
+                        <h4>W. Edwards Deming no Japão</h4>
+                        <p>Deming introduziu conceitos de qualidade total no Japão pós-guerra, lançando as bases para o milagre industrial japonês. Criação do ciclo PDCA (Plan-Do-Check-Act).</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-date">1960s</div>
+                    <div class="timeline-content">
+                        <h4>Surgimento do Controle Total da Qualidade</h4>
+                        <p>Armand Feigenbaum popularizou o conceito de Controle Total da Qualidade (TQC), envolvendo todos os departamentos na busca pela qualidade.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
