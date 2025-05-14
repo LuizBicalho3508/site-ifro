@@ -131,6 +131,13 @@
         .timeline-item {
             position: relative;
             margin-bottom: 50px;
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+        }
+        
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
         }
         
         .timeline-content {
@@ -140,6 +147,21 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             position: relative;
             width: 45%;
+        }
+        
+        .timeline-date {
+            position: absolute;
+            top: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-date {
+            left: -90px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-date {
+            right: -90px;
         }
         
         .timeline-content::after {
@@ -152,34 +174,43 @@
             border-radius: 50%;
         }
         
-        .timeline-item:nth-child(odd) .timeline-content {
-            margin-left: auto;
-        }
-        
         .timeline-item:nth-child(odd) .timeline-content::after {
-            left: -40px;
+            right: -50px;
         }
         
         .timeline-item:nth-child(even) .timeline-content::after {
-            right: -40px;
+            left: -50px;
         }
         
-        .timeline-date {
-            position: absolute;
-            top: 20px;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-date {
-            left: -150px;
-        }
-        
-        .timeline-item:nth-child(even) .timeline-date {
-            right: -150px;
-        }
-        
-        /* Table Styling */
+        /* Responsive Timeline */
+        @media (max-width: 992px) {
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                justify-content: flex-start;
+                width: 100%;
+                margin-left: 50px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -50px;
+                right: auto;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-date,
+            .timeline-item:nth-child(even) .timeline-date {
+                left: 0;
+                right: auto;
+                top: -30px;
+                position: relative;
+            }
         .table-comparison {
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
@@ -464,7 +495,7 @@
                     </ul>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
-                    <img src="/api/placeholder/600/400" alt="Modelo de Qualidade ISO 25010" class="img-fluid rounded shadow">
+                    <img src="https://a.storyblok.com/f/202591/2560x1000/a0a687316e/iso-25010-in-software-qa.jpg/m/4608x1800/filters:format(webp):quality(90)" width="300" alt="Modelo de Qualidade ISO 25010" class="img-fluid rounded shadow">
                     <div class="alert alert-info mt-4">
                         <h5><i class="fas fa-info-circle me-2"></i>Você sabia?</h5>
                         <p class="mb-0">A ISO 25010 é amplamente utilizada na indústria de software para estabelecer métricas e critérios para avaliação de qualidade de produtos, tanto durante o desenvolvimento quanto na aceitação pelo cliente.</p>
@@ -491,7 +522,7 @@
                     </ul>
                 </div>
                 <div class="col-lg-6 order-lg-1" data-aos="fade-right">
-                    <img src="/api/placeholder/600/400" alt="Ciclo PDCA da ISO 9001" class="img-fluid rounded shadow">
+                    <img src="https://macrosolutions.com/wp-content/uploads/2016/06/ISO-9001-2015.jpg" width="300" alt="Ciclo PDCA da ISO 9001" class="img-fluid rounded shadow">
                     <div class="alert alert-success mt-4">
                         <h5><i class="fas fa-lightbulb me-2"></i>Benefícios</h5>
                         <p class="mb-0">A implementação da ISO 9001 pode trazer diversos benefícios, como aumento da satisfação do cliente, melhoria dos processos internos, aumento da eficiência operacional e maior competitividade no mercado.</p>
@@ -517,7 +548,7 @@
                     </ul>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
-                    <img src="/api/placeholder/600/400" alt="Características da ISO 9126" class="img-fluid rounded shadow">
+                    <img src="https://avatars.mds.yandex.net/i?id=ee40391f7a47c8cea8d67cbafb4f7924_l-5231063-images-thumbs&n=13" width="300" alt="Características da ISO 9126" class="img-fluid rounded shadow">
                     <div class="alert alert-warning mt-4">
                         <h5><i class="fas fa-history me-2"></i>Legado</h5>
                         <p class="mb-0">Embora substituída pela ISO 25010, a ISO 9126 estabeleceu as bases fundamentais para a avaliação de qualidade de software que são utilizadas até hoje. Muitos conceitos da ISO 9126 foram expandidos e refinados na ISO 25010.</p>
@@ -629,17 +660,350 @@
                     </div>
                 </div>
                 <div class="timeline-item" data-aos="fade-left">
-                    <div class="timeline-date">1950s</div>
+                    <div class="timeline-date">1979</div>
                     <div class="timeline-content">
-                        <h4>W. Edwards Deming no Japão</h4>
-                        <p>Deming introduziu conceitos de qualidade total no Japão pós-guerra, lançando as bases para o milagre industrial japonês. Criação do ciclo PDCA (Plan-Do-Check-Act).</p>
+                        <h4>Primeira Norma BS 5750</h4>
+                        <p>O British Standards Institute (BSI) publicou a BS 5750, considerada a precursora das normas ISO 9000.</p>
                     </div>
                 </div>
                 <div class="timeline-item" data-aos="fade-right">
-                    <div class="timeline-date">1960s</div>
+                    <div class="timeline-date">1987</div>
                     <div class="timeline-content">
-                        <h4>Surgimento do Controle Total da Qualidade</h4>
-                        <p>Armand Feigenbaum popularizou o conceito de Controle Total da Qualidade (TQC), envolvendo todos os departamentos na busca pela qualidade.</p>
+                        <h4>Nascimento da ISO 9000</h4>
+                        <p>A International Organization for Standardization (ISO) lança a primeira versão da série ISO 9000 de normas de gestão da qualidade, baseada na BS 5750.</p>
                     </div>
                 </div>
                 <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-date">1991</div>
+                    <div class="timeline-content">
+                        <h4>ISO/IEC 9126</h4>
+                        <p>Publicação da ISO/IEC 9126, a primeira norma internacional para avaliação da qualidade de software.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-date">2000</div>
+                    <div class="timeline-content">
+                        <h4>Revisão da ISO 9001</h4>
+                        <p>Grande revisão da ISO 9001, introduzindo a abordagem de processos e reduzindo a ênfase em procedimentos documentados.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-date">2011</div>
+                    <div class="timeline-content">
+                        <h4>ISO/IEC 25010</h4>
+                        <p>Publicação da ISO/IEC 25010, substituindo a ISO/IEC 9126, com um modelo de qualidade mais abrangente para sistemas e software.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-date">2015</div>
+                    <div class="timeline-content">
+                        <h4>ISO 9001:2015</h4>
+                        <p>Nova revisão da ISO 9001, introduzindo o pensamento baseado em risco e a estrutura de alto nível (HLS), compatível com outras normas de sistemas de gestão.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-date">Presente</div>
+                    <div class="timeline-content">
+                        <h4>Integração com Transformação Digital</h4>
+                        <p>As normas de qualidade estão se adaptando às novas realidades tecnológicas, incluindo IA, IoT e transformação digital.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Normas Section -->
+        <section id="normas" class="py-5">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Comparativo das Normas</h2>
+            
+            <div class="mb-5" data-aos="fade-up">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-comparison">
+                        <thead>
+                            <tr class="text-center">
+                                <th>Norma</th>
+                                <th>Ano de Lançamento</th>
+                                <th>Objetivo Principal</th>
+                                <th>Aplicação</th>
+                                <th>Principais Características</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>ISO 9001</strong></td>
+                                <td class="text-center">1987 (última revisão: 2015)</td>
+                                <td>Estabelece requisitos para Sistemas de Gestão da Qualidade</td>
+                                <td>Todos os tipos de organizações, independente do tamanho ou setor</td>
+                                <td>
+                                    <ul>
+                                        <li>Foco no cliente</li>
+                                        <li>Liderança</li>
+                                        <li>Abordagem de processo</li>
+                                        <li>Pensamento baseado em risco</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>ISO 9126</strong></td>
+                                <td class="text-center">1991 (substituída pela ISO 25010)</td>
+                                <td>Avaliação da qualidade de produtos de software</td>
+                                <td>Desenvolvimento e avaliação de software</td>
+                                <td>
+                                    <ul>
+                                        <li>6 características principais</li>
+                                        <li>Foco nas características internas e externas do software</li>
+                                        <li>Métricas para avaliação de qualidade</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>ISO 25010</strong></td>
+                                <td class="text-center">2011</td>
+                                <td>Modelo de qualidade para sistemas e produtos de software</td>
+                                <td>Desenvolvimento, aquisição e avaliação de software</td>
+                                <td>
+                                    <ul>
+                                        <li>8 características principais</li>
+                                        <li>Modelo mais abrangente e detalhado</li>
+                                        <li>Inclui segurança como característica principal</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-md-12 mb-4" data-aos="fade-up">
+                    <h3 class="mb-4">Principais Diferenças</h3>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4 mb-3 mb-md-0">
+                                    <h5 class="card-title">ISO 9001 vs. ISO 25010/9126</h5>
+                                    <p>Enquanto a ISO 9001 foca nos processos de gestão da qualidade de uma organização, as ISO 25010 e 9126 focam especificamente na qualidade do produto de software.</p>
+                                </div>
+                                <div class="col-md-4 mb-3 mb-md-0">
+                                    <h5 class="card-title">ISO 9126 vs. ISO 25010</h5>
+                                    <p>A ISO 25010 expandiu o modelo da ISO 9126, adicionando novas características (como segurança e compatibilidade) e refinando as subcaracterísticas existentes.</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5 class="card-title">Evolução das Normas</h5>
+                                    <p>Todas as normas têm evoluído para incorporar novas práticas e tecnologias, com foco crescente em adaptabilidade, riscos e contexto organizacional.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-lg-12" data-aos="fade-up">
+                    <h3 class="mb-4">Marcos Importantes da Qualidade</h3>
+                    <div class="position-relative">
+                        <div class="progress" style="height: 4px;">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 100%"></div>
+                        </div>
+                        <div class="row text-center mt-3">
+                            <div class="col">
+                                <div class="p-2 rounded bg-primary text-white mb-2">1920s</div>
+                                <small>Controle Estatístico de Qualidade</small>
+                            </div>
+                            <div class="col">
+                                <div class="p-2 rounded bg-primary text-white mb-2">1950s</div>
+                                <small>Qualidade Total (TQM)</small>
+                            </div>
+                            <div class="col">
+                                <div class="p-2 rounded bg-primary text-white mb-2">1987</div>
+                                <small>Lançamento da ISO 9000</small>
+                            </div>
+                            <div class="col">
+                                <div class="p-2 rounded bg-primary text-white mb-2">1991</div>
+                                <small>ISO 9126</small>
+                            </div>
+                            <div class="col">
+                                <div class="p-2 rounded bg-primary text-white mb-2">2011</div>
+                                <small>ISO 25010</small>
+                            </div>
+                            <div class="col">
+                                <div class="p-2 rounded bg-primary text-white mb-2">2015</div>
+                                <small>ISO 9001:2015</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre Mim Section -->
+        <section id="sobre" class="about-me py-5">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Sobre Mim</h2>
+            <div class="row align-items-center">
+                <div class="col-md-5 text-center mb-4 mb-md-0" data-aos="fade-right">
+                    <img src="https://avatars.githubusercontent.com/u/74017831?v=4" alt="Foto do Autor" class="profile-image mb-4">
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-7" data-aos="fade-left">
+                    <h3 class="mb-3">Olá, sou o Desenvolvedor!</h3>
+                    <p class="lead">Especialista em Gestão da Qualidade e Engenharia de Software</p>
+                    <p>Sou um profissional apaixonado por qualidade de software e gestão de processos. Com experiência em implementação de sistemas de gestão da qualidade e certificações ISO, dedico-me a ajudar organizações a melhorar seus processos e produtos.</p>
+                    <p>Minha formação acadêmica inclui mestrado em Engenharia de Software e certificações em gestão da qualidade. Trabalho com implementação de normas ISO há mais de 8 anos, com foco especial nas normas ISO 9001, ISO 9126 e ISO 25010.</p>
+                    <p>Este site foi desenvolvido como parte de um projeto educacional para compartilhar conhecimento sobre normas ISO e gestão da qualidade, com ênfase em qualidade de software.</p>
+                    <div class="mt-4">
+                        <a href="#" class="btn btn-primary me-2"><i class="fas fa-download me-2"></i>Baixar CV</a>
+                        <a href="#" class="btn btn-outline-secondary"><i class="fas fa-envelope me-2"></i>Contato</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h4 class="mb-4">Gestão de Qualidade</h4>
+                    <p>Este site foi desenvolvido como um recurso educacional sobre gestão de qualidade e normas ISO, com ênfase nas normas ISO 25010, ISO 9001 e ISO 9126.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h4 class="mb-4">Links Rápidos</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#home" class="text-dark text-decoration-none"><i class="fas fa-chevron-right me-2 text-primary"></i>Home</a></li>
+                        <li class="mb-2"><a href="#iso25010" class="text-dark text-decoration-none"><i class="fas fa-chevron-right me-2 text-primary"></i>ISO 25010</a></li>
+                        <li class="mb-2"><a href="#iso9001" class="text-dark text-decoration-none"><i class="fas fa-chevron-right me-2 text-primary"></i>ISO 9001</a></li>
+                        <li class="mb-2"><a href="#iso9126" class="text-dark text-decoration-none"><i class="fas fa-chevron-right me-2 text-primary"></i>ISO 9126</a></li>
+                        <li class="mb-2"><a href="#caracteristicas" class="text-dark text-decoration-none"><i class="fas fa-chevron-right me-2 text-primary"></i>Características</a></li>
+                        <li class="mb-2"><a href="#historico" class="text-dark text-decoration-none"><i class="fas fa-chevron-right me-2 text-primary"></i>Histórico</a></li>
+                        <li class="mb-2"><a href="#sobre" class="text-dark text-decoration-none"><i class="fas fa-chevron-right me-2 text-primary"></i>Sobre Mim</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h4 class="mb-4">Referências</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="https://www.iso.org" target="_blank" class="text-dark text-decoration-none"><i class="fas fa-external-link-alt me-2 text-primary"></i>ISO - International Organization for Standardization</a></li>
+                        <li class="mb-2"><a href="https://www.iso.org/standard/35733.html" target="_blank" class="text-dark text-decoration-none"><i class="fas fa-external-link-alt me-2 text-primary"></i>ISO/IEC 25010</a></li>
+                        <li class="mb-2"><a href="https://www.iso.org/standard/62085.html" target="_blank" class="text-dark text-decoration-none"><i class="fas fa-external-link-alt me-2 text-primary"></i>ISO 9001:2015</a></li>
+                        <li class="mb-2"><a href="https://www.iso.org/standard/22749.html" target="_blank" class="text-dark text-decoration-none"><i class="fas fa-external-link-alt me-2 text-primary"></i>ISO/IEC 9126</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-4 bg-light">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 Gestão de Qualidade. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <!--<p class="mb-0">Desenvolvido com <i class="fas fa-heart text-danger"></i> e muita qualidade!</p>-->
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS - Animate On Scroll -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100,
+            delay: 100
+        });
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close navbar on mobile when clicking on a link
+                const navbarToggler = document.querySelector('.navbar-toggler');
+                const navbarCollapse = document.querySelector('.navbar-collapse');
+                
+                if (navbarCollapse.classList.contains('show')) {
+                    navbarToggler.click();
+                }
+            });
+        });
+        
+        // Add active class to nav items when scrolling
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}` || 
+                    (link.classList.contains('dropdown-toggle') && 
+                     link.nextElementSibling && 
+                     link.nextElementSibling.querySelector(`a[href="#${current}"]`))) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Fix timeline display
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ensure the timeline items are properly positioned
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach((item, index) => {
+                if (index % 2 === 0) {
+                    item.classList.add('timeline-right');
+                } else {
+                    item.classList.add('timeline-left');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
